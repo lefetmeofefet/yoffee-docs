@@ -1,0 +1,12 @@
+html {
+    --primary-color-rgb: 29, 31, 33;
+    --secondary-color-rgb: 0, 170, 0;
+    --text-color-rgb: 221, 221, 221;
+
+    --primary-color: rgb(var(--primary-color-rgb));
+    --secondary-color: rgb(var(--secondary-color-rgb));
+    --text-color: rgb(var(--text-color-rgb));
+    --text-color-weak-1: rgb(var(--text-color-rgb), 0.5);
+    --text-color-weak-2: rgb(var(--text-color-rgb), 0.3);
+}
+
