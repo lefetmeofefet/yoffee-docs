@@ -4,7 +4,6 @@
     <meta charset="UTF-8"/>
     <title>Yoffee JS</title>
 
-
     <!--    <meta name="viewport"-->
     <!--          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">-->
     <!--    <meta name="mobile-web-app-capable" content="yes">-->
@@ -27,25 +26,29 @@
             font-family: 'Roboto Mono', monospace;
             height: 100%;
             margin: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
         }
 
         html {
             height: 100%;
-            background-color: var(--primary-color);
-            color: var(--text-color);
         }
     </style>
 </head>
 
-<body>
+<body theme="dark">
+
 <!--Icons-->
 <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
 <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css"
       media="all">
 
-<!--App-->
-<script src="src/wixtree-app.js" type="module"></script>
+<!--Swipe events lib-->
+<script src="./libs/swiped-events/swiped-events.min.js" type="module"></script>
 
-<wixtree-app></wixtree-app>
+<!--App-->
+<script src="src/yoffee-docs-app.js" type="module"></script>
+
+<yoffee-docs-app></yoffee-docs-app>
 </body>
 </html>
