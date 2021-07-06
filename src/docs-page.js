@@ -1,17 +1,10 @@
-import {HTMElement} from "../libs/htmel/htmel.min.js";
-import state from "../state.js"
-import "./docs/doc-basics.js"
-import "./docs/doc-advanced.js"
-import "./docs/doc-comparison.js"
-import "./docs/doc-examples.js"
+import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
+import state from "./state.js"
+import "./mark-down.js"
 
-customElements.define("docs-page", class extends HTMElement {
-    connectedCallback() {
-
-    }
-
+createYoffeeElement("docs-page", class extends YoffeeElement {
     render() {
-        return this.html(this.state, state)`
+        return html(this.state, state)`
 <link href="./src/style/scrollbar-style.css" rel="stylesheet">
 <style>
     :host {
@@ -23,6 +16,7 @@ customElements.define("docs-page", class extends HTMElement {
     }
         
     #side-menu {
+        height: -webkit-fill-available;
         display: flex;
         flex-direction: column;
         width: 240px;
@@ -50,7 +44,8 @@ customElements.define("docs-page", class extends HTMElement {
         width: 100%;
         transition: 400ms;
         opacity: 1;
-        padding: 30px;
+        padding: 7%;
+        overflow-y: auto;
     }
     
     #doc-content[overlayed] {
@@ -67,27 +62,17 @@ customElements.define("docs-page", class extends HTMElement {
 </style>
 
 <div id="side-menu" open=${() => state.sideMenuOpen}>
-    ${() => state.tree.children.map((node, index) => this.html()`
+    ${() => state.tree.children.map((node, index) => html()`
     <tree-node node=${() => node}
                depth=${0}>           
     </tree-node>
     `)}
 </div>
 
-<div id="doc-content" overlayed=${() => state.sideMenuOpen && window.innerWidth < 800}>
-        ${() => {
-            if (state.docNode.name === "Basics") {
-                return this.html()`<doc-basics></doc-basics>`
-            } else if (state.docNode.name === "Advanced") {
-                return this.html()`<doc-advanced></doc-advanced>`
-            } else if (state.docNode.name === "Comparison") {
-                return this.html()`<doc-comparison></doc-comparison>`
-            } else if (state.docNode.name === "Examples") {
-                return this.html()`<doc-examples></doc-examples>`
-            }
-        }}
-</div>
 
+<div id="doc-content" overlayed=${() => state.sideMenuOpen && window.innerWidth < 800}>
+    <mark-down markdown=${() => state.selectedNode.doc}></mark-down> 
+</div>
         `
     }
 });

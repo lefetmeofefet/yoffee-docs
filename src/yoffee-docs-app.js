@@ -1,5 +1,5 @@
-import {HTMElement} from "../libs/htmel/htmel.min.js"
-import state from "../state.js"
+import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
+import state from "./state.js"
 import "./tree-node.js"
 import "./components/x-button.js"
 import "./components/text-input.js"
@@ -15,7 +15,7 @@ const PAGES = {
     supportUs: "support-us"
 }
 
-customElements.define("yoffee-docs-app", class extends HTMElement {
+customElements.define("yoffee-docs-app", class extends YoffeeElement {
     constructor() {
         let urlParams = new URLSearchParams(window.location.search);
         let page = urlParams.get("page");
@@ -25,7 +25,8 @@ customElements.define("yoffee-docs-app", class extends HTMElement {
         })
     }
     render() {
-        return this.html(this.props, this.state, state.tree, state)`
+        return html(this.props, this.state, state.tree, state)`
+<link href="./src/style/scrollbar-style.css" rel="stylesheet">
 <style>
     :host {
         display: flex;
@@ -129,7 +130,7 @@ customElements.define("yoffee-docs-app", class extends HTMElement {
 <div id="header">
     <x-icon id="slide-menu-button" icon="fas fa-bars"
             onclick=${() => () => state.sideMenuOpen = !state.sideMenuOpen}></x-icon>
-    <img id="logo" src="yoffee-logo.png" onclick=${() => () => this.state.currentPage = PAGES.home} />
+    <img id="logo" src="res/yoffee-logo.png" onclick=${() => () => this.switchPage(PAGES.home)} />
     <div id="title" onclick=${() => () => this.switchPage(PAGES.home)}>Yoffee.js</div>
     
     <div id="docs-button" class="header-button" 
@@ -157,12 +158,12 @@ customElements.define("yoffee-docs-app", class extends HTMElement {
 
 ${() => {
     if (this.state.currentPage === PAGES.home) {
-        return this.html()`<home-page getstarted=${() => () => this.switchPage(PAGES.docs)}
+        return html()`<home-page getstarted=${() => () => this.switchPage(PAGES.docs)}
                                       github=${() => () => this.openGithub()}></home-page>`
     } else if (this.state.currentPage === PAGES.docs) {
-        return this.html()`<docs-page></docs-page>`
+        return html()`<docs-page></docs-page>`
     } else if (this.state.currentPage === PAGES.supportUs) {
-        return this.html()`<support-us-page></support-us-page>`
+        return html()`<support-us-page></support-us-page>`
     }
 }}
 

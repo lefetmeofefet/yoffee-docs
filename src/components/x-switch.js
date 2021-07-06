@@ -1,8 +1,8 @@
-import {HTMElement} from "../../libs/htmel/htmel.min.js";
+import {YoffeeElement, createYoffeeElement, html} from "../../libs/yoffee/yoffee.min.js";
 import "./x-button.js"
 
 
-customElements.define("x-switch", class extends HTMElement {
+customElements.define("x-switch", class extends YoffeeElement {
     constructor() {
         super({});
 
@@ -16,7 +16,7 @@ customElements.define("x-switch", class extends HTMElement {
 
     render() {
         //language=HTML
-        return this.html(this.props, this.state)`
+        return html(this.props, this.state)`
             <style>
                 :host {
                     display: flex;

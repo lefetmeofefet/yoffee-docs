@@ -1,11 +1,11 @@
-import {HTMElement} from "../../libs/htmel/htmel.min.js";
+import {YoffeeElement, createYoffeeElement, html} from "../../libs/yoffee/yoffee.min.js";
 import "./x-icon.js"
 
 
-customElements.define("x-loader", class extends HTMElement {
+customElements.define("x-loader", class extends YoffeeElement {
     render() {
         //language=HTML
-        return this.html(this.props)`
+        return html(this.props)`
                 <style>
                     :host {
                         visibility: ${() => this.props.loading ? "unset": "hidden"};

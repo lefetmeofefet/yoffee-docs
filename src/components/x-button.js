@@ -1,7 +1,7 @@
-import {HTMElement} from "../../libs/htmel/htmel.min.js";
+import {YoffeeElement, createYoffeeElement, html} from "../../libs/yoffee/yoffee.min.js";
 
 
-customElements.define("x-button", class extends HTMElement {
+customElements.define("x-button", class extends YoffeeElement {
     constructor() {
         super({
 
@@ -34,7 +34,7 @@ customElements.define("x-button", class extends HTMElement {
 
     render() {
         //language=HTML
-        return this.html(this.props, this.state)`
+        return html(this.props, this.state)`
             <style>
                 :host {
                     -webkit-tap-highlight-color: rgba(0,0,0,0);

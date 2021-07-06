@@ -1,7 +1,7 @@
-import {HTMElement} from "../../libs/htmel/htmel.min.js";
+import {YoffeeElement, createYoffeeElement, html} from "../../libs/yoffee/yoffee.min.js";
 
 
-customElements.define("text-input", class extends HTMElement {
+customElements.define("text-input", class extends YoffeeElement {
     connectedCallback() {
         if (this.props.value) {
             this.setValue(this.props.value);
@@ -16,7 +16,7 @@ customElements.define("text-input", class extends HTMElement {
 
     render() {
         //language=HTML
-        return this.html(this.props, this.state)`
+        return html(this.props, this.state)`
             <style>
                 :host {
                     display: flex;

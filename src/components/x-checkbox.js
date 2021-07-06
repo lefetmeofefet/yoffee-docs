@@ -1,9 +1,9 @@
-import HTMElement from "../../libs/htmelement/htmelement.js";
+import {YoffeeElement, createYoffeeElement, html} from "../../libs/yoffee/yoffee.min.js";
 import "./x-button.js"
 import "./x-icon.js"
 
 
-customElements.define("x-checkbox", class extends HTMElement {
+customElements.define("x-checkbox", class extends YoffeeElement {
     constructor() {
         super({});
 
@@ -17,7 +17,7 @@ customElements.define("x-checkbox", class extends HTMElement {
 
     render() {
         //language=HTML
-        return this.html(this.props, this.state)`
+        return html(this.props, this.state)`
                 <style>
                     :host {
                         display: flex;

@@ -1,11 +1,11 @@
-import {HTMElement} from "../../libs/htmel/htmel.min.js";
+import {YoffeeElement, createYoffeeElement, html} from "../../libs/yoffee/yoffee.min.js";
 import "./x-button.js"
 
 
-customElements.define("x-options", class extends HTMElement {
+customElements.define("x-options", class extends YoffeeElement {
     render() {
         //language=HTML
-        return this.html(this.props, this.state)`
+        return html(this.props, this.state)`
                 <style>
                     :host {
                         display: flex;
@@ -47,7 +47,7 @@ customElements.define("x-options", class extends HTMElement {
                 </style>
                 
                 <div id="container">
-                    ${() => this.props.options.map(option => this.html()`
+                    ${() => this.props.options.map(option => html()`
                         <x-button clicked=${() => () => this.clicked(option)}
                                   is-selected=${() => option === this.props.value}
                                   disabled=${() => option === this.props.value}

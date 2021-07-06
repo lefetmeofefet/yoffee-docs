@@ -1,0 +1,3 @@
+- fix icon loading
+- new icon
+- two lists, divided by a div. updating second list causes bug in order!!!

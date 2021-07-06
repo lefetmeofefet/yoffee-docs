@@ -1,8 +1,8 @@
-import {HTMElement} from "../libs/htmel/htmel.min.js"
+import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
 
-customElements.define("support-us-page", class extends HTMElement {
+createYoffeeElement("support-us-page", class extends YoffeeElement {
     render() {
-        return this.html(this.state)`
+        return html(this.state)`
 <style>
     :host {
         display: flex;
@@ -33,10 +33,10 @@ customElements.define("support-us-page", class extends HTMElement {
 </style>
 <h1 id="title">Support Yoffee.js</h1>
 <div id="persuation-text">
-    Yoffee.js is a MIT licensed open source project and is completely free to use.
+    Yoffee.js is a free library and it will remain free. 
+    However, maintaining and improving the library costs time and money.
     <br> 
-    I hope that Yoffee has made your web programming life a bit more fun, and that you'll buy me a cup of virtual 
-    coffee :)
+    I hope that Yoffee has made your web programming life a bit more fun, and that you'll buy me a cup of Coffee.js :)
 </div>
 <div id="payment-options">
     <div class="payment-option">Paypal</div>

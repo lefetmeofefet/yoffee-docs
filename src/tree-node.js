@@ -1,11 +1,11 @@
-import {HTMElement} from "../libs/htmel/htmel.min.js"
+import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
 import "./components/x-button.js"
 import "./components/x-icon.js"
-import state from "../state.js";
+import state from "./state.js";
 
-customElements.define("tree-node", class extends HTMElement {
+createYoffeeElement("tree-node", class extends YoffeeElement {
     render() {
-        return this.html(this.props.node, this.state)`
+        return html(this.props.node, this.state)`
 <style>
     :host {
         display: flex;
@@ -42,6 +42,7 @@ customElements.define("tree-node", class extends HTMElement {
         width: -webkit-fill-available;
         min-width: 0;
         margin-right: 6px;
+        margin-left: 6px;
     }
     
     #open-icon {
@@ -85,7 +86,7 @@ customElements.define("tree-node", class extends HTMElement {
                 state.selectedNode.isSelected = false;
                 this.props.node.isSelected = true;
                 state.selectedNode = this.props.node;
-                this.props.selectparent();
+                
                 if (window.innerWidth < 800) {
                     state.sideMenuOpen = false;
                 }
@@ -97,12 +98,11 @@ customElements.define("tree-node", class extends HTMElement {
     <div id="name">${() => this.props.node.name}</div>
 </div>
 
-${() => this.props.node.opened && this.html()`
+${() => this.props.node.opened && html()`
 <div id="children">
-    ${() => this.props.node.children.map((child, index) => this.html()`
+    ${() => this.props.node.children.map((child, index) => html()`
         <tree-node node=${() => child}
-                   depth=${() => parseInt(this.props.depth) + 1}
-                   selectparent=${() => () => state.docNode = this.props.node}></tree-node>
+                   depth=${() => parseInt(this.props.depth) + 1}></tree-node>
     `)}
 </div>
 `}

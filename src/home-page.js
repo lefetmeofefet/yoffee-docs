@@ -1,15 +1,60 @@
-import {HTMElement} from "../libs/htmel/htmel.min.js";
+import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
+import "./mark-down.js"
 
-customElements.define("home-page", class extends HTMElement {
+
+const description = `
+<b>Yoffee.js</b> is a reactive UI library for creating web components and easily updating their content.
+
+* <b>Fast</b> - yoffee only reruns expressions that were changed, and only updates the dynamic parts of the UI. No virtual DOM diffing. No virtual DOM at all. 
+* <b>Straighforward</b> - Just plain HTML, no special syntax to learn.
+* <b>Lightweight</b> - No build steps required. Write once, use anywhere.
+* <b>Web Components</b> - Yoffee uses web components to create brand new, reusable elements. CSS is scoped by using Shadow DOM.
+
+<br>
+## A Quick Look
+\`\`\`html
+<script type="module">
+    import {html, createYoffeeElement} from "https://unpkg.com/yoffee@latest/dist/yoffee.min.js"
+    
+    createYoffeeElement("counter-button", () => {
+        const state = {
+            clicks: 0
+        }
+        
+        return html(state)\`
+            <button onclick=\${() => state.clicks += 1}>
+                I've been clicked \${() => state.clicks} times
+            </button>
+        \`
+    })
+</script>
+<counter-button></counter-button>
+\`\`\`
+
+Play with the example at [JSFiddle](https://jsfiddle.net/Numbnut/6c7ovnuk/11/)
+
+<br>
+## Our Philosophy
+<b>Yoffee.js</b> was created because there was a need for a minimal and efficient one way binding library. 
+No other library satisfied the need, so we created one ourselves, with the following guidelines:
+* No virtual DOM
+* Unopinionated: No special syntax, just plain HTML
+* No build steps
+* One way binding with minimum expression execution
+* Web components
+
+`
+
+createYoffeeElement("home-page", class extends YoffeeElement {
     render() {
-        return this.html(this.state)`
-<link href="./src/style/scrollbar-style.css" rel="stylesheet">
+        return html(this.state)`
 <style>
     :host {
         display: flex;
         flex-direction: column;
         height: inherit;
         align-items: center;
+        overflow-y: auto;
     }
     
     #title-block-container {
@@ -100,9 +145,16 @@ customElements.define("home-page", class extends HTMElement {
         }
     }
     
+    #description-container {
+        display: flex;
+        padding: 40px 40px;
+        max-width: 800px;
+        width: -webkit-fill-available;
+    }
+    
 </style>
 <div id="title-block-container">
-    <img id="logo" src="yoffee-logo.png"/>
+    <img id="logo" src="res/yoffee-logo.png"/>
     <div id="title-text-container">
         <div id="title-text">Yoffee</div>
         <div id="title-description">Robust library for building user interfaces</div>
@@ -113,11 +165,11 @@ customElements.define("home-page", class extends HTMElement {
                 <x-icon id="github-icon" icon="fab fa-github"></x-icon>
             </x-button>
         </div>
-        
     </div>
 </div>
-<div></div>
-
+<div id="description-container">
+    <mark-down markdown=${() => description}></mark-down>
+</div>
 
         `
     }
