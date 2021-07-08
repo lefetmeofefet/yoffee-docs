@@ -1,10 +1,12 @@
 export default `
 # What is Yoffee.js?
-Yoffee.js is reactive, unopinionated, lightweight UI library. With yoffee you can create web components, 
+Yoffee.js is reactive, unopinionated, lightweight UI library. 
+
+With yoffee you can create web components, 
 which are brand new html tags. These web components can be used anywhere, with zero boilerplate.
 
 Yoffee is unopinionated - it doesn't force a special syntax. You just write regular HTML, and the reactive parts of the
-UI will be updated automatically when they should.
+UI will be updated automatically when they should!
 <br>
 <br>
 ## Installation

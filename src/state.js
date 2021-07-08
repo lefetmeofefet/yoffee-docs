@@ -18,7 +18,7 @@ let state = {
                 name: "Getting Started",
                 children: [],
                 isSelected: true,
-                doc: GettingStarted
+                doc: GettingStarted,
             }, {
                 name: "Hello World",
                 children: [],
@@ -97,6 +97,14 @@ let state = {
         }]
     }
 };
+state.tree.children.forEach(
+    (category, catIndex) => category.children.forEach(
+        (n, index) => {
+            n.previous = state.tree.children[catIndex].children[index - 1]
+            n.next = state.tree.children[catIndex].children[index + 1]
+        }
+    )
+)
 
 document.addEventListener('swiped-left', function(e) {
     if (state.sideMenuOpen) {

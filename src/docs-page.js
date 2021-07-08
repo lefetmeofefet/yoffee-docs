@@ -59,6 +59,23 @@ createYoffeeElement("docs-page", class extends YoffeeElement {
         }
     }
     
+    #next-previous-buttons {
+        display: flex;
+        font-size: 13px;
+        padding-top: 30px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #next-previous-buttons > x-button {
+        box-shadow: none;
+        border: none;
+        color: var(--secondary-color);
+    }
+    
+    #next-previous-buttons > #next {
+        margin-left: auto;
+    }
 </style>
 
 <div id="side-menu" open=${() => state.sideMenuOpen}>
@@ -71,8 +88,28 @@ createYoffeeElement("docs-page", class extends YoffeeElement {
 
 
 <div id="doc-content" overlayed=${() => state.sideMenuOpen && window.innerWidth < 800}>
-    <mark-down markdown=${() => state.selectedNode.doc}></mark-down> 
+    <mark-down markdown=${() => state.selectedNode.doc}></mark-down>
+    <div id="next-previous-buttons">
+        ${() => state.selectedNode.previous != null &&
+            html()`<x-button id="previous" 
+                             onclick=${() => this.flipPage(state.selectedNode.previous)}>
+                         < ${() => state.selectedNode.previous.name}
+                   </x-button>`}        
+        ${() => state.selectedNode.next != null && 
+            html()`<x-button id="next" 
+                             onclick=${() => this.flipPage(state.selectedNode.next)}>
+                         ${() => state.selectedNode.next.name} >
+                   </x-button>`}
+        
+    </div> 
 </div>
         `
+    }
+
+    flipPage(nextPage) {
+        state.selectedNode.isSelected = false;
+        nextPage.isSelected = true;
+        state.selectedNode = nextPage;
+        this.shadowRoot.querySelector("#doc-content").scrollTop = 0;
     }
 });

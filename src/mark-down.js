@@ -30,6 +30,12 @@ customElements.define("mark-down", class extends YoffeeElement {
                     padding: 0px 4px;
                     opacity: 0.8;
                 }
+
+                @media (max-width: 800px) {
+                    code {
+                        font-size: 13px;
+                    }
+                }
             </style>
             ${() => {
                 let converter = new showdown.Converter({

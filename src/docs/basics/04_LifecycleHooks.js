@@ -15,4 +15,11 @@ createYoffeeElement("some-element", (props, element) => {
     return html(props, state)\`...\`
 })
 \`\`\`
+
+\`onConnect\` and \`onDisconnect\` are the same as \`connectedCallback\` and \`disconnectedCallback\` 
+in [custom elements specification](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
+
+
+Note that \`onConnect\` is invoked each time the custom element is appended into a document-connected element. This will happen each time the node is moved, and may happen before the element's contents have been fully parsed.
+
 `

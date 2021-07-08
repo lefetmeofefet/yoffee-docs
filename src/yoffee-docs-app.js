@@ -8,11 +8,13 @@ import "./components/x-icon.js"
 import "./home-page.js"
 import "./docs-page.js"
 import "./support-us-page.js"
+import "./thank-you-page.js"
 
 const PAGES = {
     home: "home",
     docs: "docs",
-    supportUs: "support-us"
+    supportUs: "support-us",
+    thankYou: "thank-you"
 }
 
 customElements.define("yoffee-docs-app", class extends YoffeeElement {
@@ -77,6 +79,12 @@ customElements.define("yoffee-docs-app", class extends YoffeeElement {
         color: var(--secondary-color);
     }
     
+    #support-us-button {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    
     #docs-button {
         margin-left: auto !important;
     }
@@ -117,6 +125,7 @@ customElements.define("yoffee-docs-app", class extends YoffeeElement {
     @media (max-width: 800px) {
         #logo {
             margin-left: ${() => this.state.currentPage === PAGES.docs ? "20px" : "0"};
+            margin-right: 10px;
             width: 28px;
             height: 28px;
         }
@@ -164,6 +173,8 @@ ${() => {
         return html()`<docs-page></docs-page>`
     } else if (this.state.currentPage === PAGES.supportUs) {
         return html()`<support-us-page></support-us-page>`
+    } else if (this.state.currentPage === PAGES.thankYou) {
+        return html()`<thank-you-page></thank-you-page>`
     }
 }}
 
