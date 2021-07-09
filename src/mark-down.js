@@ -11,6 +11,12 @@ customElements.define("mark-down", class extends YoffeeElement {
                     overflow: hidden
                 }
                 
+                h1 {
+                    border-bottom: 1px solid #8080808c;
+                    padding-bottom: 5px;
+                    padding-top: 20px;
+                }
+                
                 a {
                     color: var(--secondary-color) !important;
                 }

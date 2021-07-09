@@ -1,5 +1,5 @@
 import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
-import state from "./state.js"
+import state, {PAGES} from "./state.js"
 import "./tree-node.js"
 import "./components/x-button.js"
 import "./components/text-input.js"
@@ -10,12 +10,6 @@ import "./docs-page.js"
 import "./support-us-page.js"
 import "./thank-you-page.js"
 
-const PAGES = {
-    home: "home",
-    docs: "docs",
-    supportUs: "support-us",
-    thankYou: "thank-you"
-}
 
 customElements.define("yoffee-docs-app", class extends YoffeeElement {
     constructor() {

@@ -8,7 +8,7 @@ createYoffeeElement("support-us-page", class extends YoffeeElement {
         display: flex;
         flex-direction: column;
         height: inherit;
-        padding: 40px 22%;
+        padding: 40px 12%;
     }
     
     #title {
@@ -51,7 +51,7 @@ createYoffeeElement("support-us-page", class extends YoffeeElement {
 </div>
 <h2 id="contributors-title">Sponsors</h2>
 <div>
-    I AM CONTRIBUTORS LIST
+    I AM SPONSORS LIST
 </div>
         `
     }

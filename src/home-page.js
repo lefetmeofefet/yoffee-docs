@@ -32,17 +32,43 @@ const description = `
 \`\`\`
 
 Play with the example at [JSFiddle](https://jsfiddle.net/Numbnut/6c7ovnuk/11/)
+<br>
+# Why Yoffee.js?
+<b>Yoffee</b> does one thing and does it well: Reactive web components, much like some modern UI libraries.
+<br> 
+<b>Yoffee</b> stands out from competitors in two major aspects:
+* <b>Unopinionated</b> - you're writing pure html, no directives or special characters for attribute types
+* <b>Render once, and minimize evaluations</b> - when updating, only relevant expressions will re-evaluate, and only the relevant DOM node will update.
+
+You can read about comparisons with major frameworks [here](${window.location.origin + window.location.pathname}?page=docs&doc=Comparisons) 
+
 
 <br>
 ## Our Philosophy
 <b>Yoffee.js</b> was created because there was a need for a minimal and efficient one way binding library. 
-No other library satisfied the need, so we created one ourselves, with the following guidelines:
-* No virtual DOM
-* Unopinionated: No special syntax, just plain HTML
-* No build steps
-* One way binding with minimum expression execution
-* Web components
+We felt that other libraries compromised on aspects we wanted to optimise, so we created one ourselves, with the following guidelines:
+* Unopinionated - No special syntax, just plain HTML
+* Works out of the box - No build steps 
+* No virtual DOM - work with real DOM to make outside updates "legit", and to feel less like a framework
+* Reactive - One way binding with minimum expression execution
+* Web components and scoped styles
 
+Yoffee will remain open source forever, which brings us to the next section:
+
+<br>
+## Contribute!
+If you like this project and you have ideas on how to make it better, feel free to send us an email at 
+davidgdalevich7@gmail.com, and we'll gladly collaborate! 
+
+<br>
+## Acknowledgemenets
+This site was written using:
+* <b>highlight.js</b>
+* <b>showdown.js</b>
+* <b>swiped-events.js</b>
+* And finally, <b>Yoffee.js</b>
+
+Thanks for all the open sauce, and keep rocking!
 `
 
 createYoffeeElement("home-page", class extends YoffeeElement {

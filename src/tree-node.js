@@ -1,7 +1,7 @@
 import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
 import "./components/x-button.js"
 import "./components/x-icon.js"
-import state from "./state.js";
+import state, {PAGES} from "./state.js";
 
 createYoffeeElement("tree-node", class extends YoffeeElement {
     render() {
@@ -86,6 +86,7 @@ createYoffeeElement("tree-node", class extends YoffeeElement {
                 state.selectedNode.isSelected = false;
                 this.props.node.isSelected = true;
                 state.selectedNode = this.props.node;
+                window.history.replaceState(null, null, `?page=${PAGES.docs}&doc=${state.selectedNode.name}`);
                 
                 if (window.innerWidth < 800) {
                     state.sideMenuOpen = false;

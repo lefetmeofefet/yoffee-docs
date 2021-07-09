@@ -1,8 +1,30 @@
 import {YoffeeElement, createYoffeeElement, html} from "../libs/yoffee/yoffee.min.js";
-import state from "./state.js"
+import state, {PAGES} from "./state.js"
 import "./mark-down.js"
 
 createYoffeeElement("docs-page", class extends YoffeeElement {
+    constructor() {
+        super({})
+
+        let urlParams = new URLSearchParams(window.location.search);
+        let doc = urlParams.get("doc");
+        if (doc != null) {
+            loop:
+            for (let category of state.tree.children) {
+                if (category.name === doc) {
+                    this.setPage(category)
+                    break;
+                }
+                for (let child of category.children) {
+                    if (child.name === doc) {
+                        this.setPage(child)
+                        break loop;
+                    }
+                }
+            }
+        }
+    }
+
     render() {
         return html(this.state, state)`
 <link href="./src/style/scrollbar-style.css" rel="stylesheet">
@@ -44,7 +66,7 @@ createYoffeeElement("docs-page", class extends YoffeeElement {
         width: 100%;
         transition: 400ms;
         opacity: 1;
-        padding: 7%;
+        padding: 3% 7% 7% 7%;
         overflow-y: auto;
     }
     
@@ -107,9 +129,15 @@ createYoffeeElement("docs-page", class extends YoffeeElement {
     }
 
     flipPage(nextPage) {
-        state.selectedNode.isSelected = false;
-        nextPage.isSelected = true;
-        state.selectedNode = nextPage;
+        this.setPage(nextPage)
+        window.history.replaceState(null, null, `?page=${PAGES.docs}&doc=${state.selectedNode.name}`);
+
         this.shadowRoot.querySelector("#doc-content").scrollTop = 0;
+    }
+
+    setPage(page) {
+        state.selectedNode.isSelected = false;
+        page.isSelected = true;
+        state.selectedNode = page;
     }
 });

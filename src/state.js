@@ -4,6 +4,16 @@ import DataBinding from "./docs/basics/02_DataBinding.js";
 import Attributes from "./docs/basics/03_Attributes.js";
 import LifecycleHooks from "./docs/basics/04_LifecycleHooks.js";
 
+import TodoList from "./docs/examples/00_TodoList.js";
+import Comparisons from "./docs/comparison/00_Comparisons.js";
+
+
+const PAGES = {
+    home: "home",
+    docs: "docs",
+    supportUs: "support-us",
+    thankYou: "thank-you"
+}
 
 let state = {
     darkTheme: true,
@@ -12,7 +22,7 @@ let state = {
     tree: {
         name: "ROOT",
         children: [{
-            name: "Basics",
+            name: "Documentation",
             opened: true,
             children: [{
                 name: "Getting Started",
@@ -85,16 +95,24 @@ let state = {
         //         children: []
         //     }]
         // },
-            {
+        {
             name: "Examples",
-            children: [{
-                name: "Form",
-                children: []
-            }, {
+            children: [
+            //     {
+            //     name: "Form",
+            //     children: []
+            // },
+                {
                 name: "Todo list",
-                children: []
+                children: [],
+                doc: TodoList
             }]
-        }]
+        }, {
+            name: "Comparisons",
+            children: [],
+            doc: Comparisons
+        },
+        ]
     }
 };
 state.tree.children.forEach(
@@ -115,3 +133,4 @@ document.addEventListener('swiped-left', function(e) {
 state.selectedNode = state.tree.children[0].children[0]
 
 export default state;
+export {PAGES}
