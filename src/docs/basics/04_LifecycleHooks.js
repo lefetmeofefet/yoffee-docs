@@ -30,7 +30,7 @@ It is possible to access the DOM of the element by using the reference to the el
 Example:
 \`\`\`js
 createYoffeeElement("some-element", (props, element) => html()\`
-    <button onclick=${() => element.shadowRoot.querySelector("#text-input").value = "text"}>
+    <button onclick=\${() => element.shadowRoot.querySelector("#text-input").value = "text"}>
         Click to set text
     </button>
     <input id="text-input"></input>
