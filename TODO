@@ -1,3 +1,12 @@
 - fix icon loading
 - new icon
-- two lists, divided by a div. updating second list causes bug in order!!!
+- two lists, divided by a div. updating second list causes bug in order!!!??
+- demonstrate <slot>
+- code examples:
+    - todo list
+    - form
+    - modal with <slot> and events and whatnot
+    - load from serververververver
+    - shopping app
+- guide as well as docs. From zero to something
+- sample app for forking

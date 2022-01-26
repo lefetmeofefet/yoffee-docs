@@ -2,7 +2,8 @@ import GettingStarted from "./docs/basics/00_GettingStarted.js";
 import HelloWorld from "./docs/basics/01_HelloWorld.js";
 import DataBinding from "./docs/basics/02_DataBinding.js";
 import Attributes from "./docs/basics/03_Attributes.js";
-import LifecycleHooks from "./docs/basics/04_LifecycleHooks.js";
+import DOMAndFunctions from "./docs/basics/04_DOM&Functions.js";
+import LifecycleHooks from "./docs/basics/05_LifecycleHooks.js";
 
 import TodoList from "./docs/examples/00_TodoList.js";
 import Comparisons from "./docs/comparison/00_Comparisons.js";
@@ -41,6 +42,10 @@ let state = {
                 name: "Attributes",
                 children: [],
                 doc: Attributes
+            }, {
+                name: "DOM and Functions",
+                children: [],
+                doc: DOMAndFunctions
             }, {
                 name: "Lifecycle",
                 children: [],
