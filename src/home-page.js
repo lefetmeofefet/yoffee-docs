@@ -123,15 +123,28 @@ createYoffeeElement("home-page", class extends YoffeeElement {
         padding: 16px 19px;
         background-color: var(--secondary-color);
         margin-right: 20px;
+        white-space: nowrap;
     }
     
     #github-button {
         font-size: 20px;
         padding: 16px 19px;
         background-color: var(--text-color-weak-3);
+        margin-right: 20px;
     }
     
     #github-button > #github-icon {
+        margin-left: 10px;
+    }
+    
+    #discord-button {
+        font-size: 20px;
+        padding: 16px 19px;
+        background-color: var(--text-color-weak-3);
+        background-color: #5865f2;
+    }
+    
+    #discord-button > #discord-icon {
         margin-left: 10px;
     }
     
@@ -169,6 +182,11 @@ createYoffeeElement("home-page", class extends YoffeeElement {
             margin-right: 0;
             margin-bottom: 20px;
         }
+        
+        #github-button {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
     }
     
     #description-container {
@@ -189,6 +207,10 @@ createYoffeeElement("home-page", class extends YoffeeElement {
             <x-button id="github-button" onclick=${() => () => this.props.github()}>
                 Github
                 <x-icon id="github-icon" icon="fab fa-github"></x-icon>
+            </x-button>
+            <x-button id="discord-button" onclick=${() => () => this.props.discord()}>
+                Discord
+                <x-icon id="discord-icon" icon="fab fa-discord"></x-icon>
             </x-button>
         </div>
     </div>

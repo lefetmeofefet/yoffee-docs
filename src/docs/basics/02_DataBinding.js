@@ -131,6 +131,12 @@ state.items[0].name += "s";
 state.items = [{name: "new name"}, {name: "another"}]
 \`\`\`
 
+Note that when an item is appended to the list, it won't rerender - you have to reassign the list:
+\`\`\`javascript
+state.items.push(item) // Doesn't update yet
+state.items = [...state.items]
+\`\`\`
+
 <br><br>
 A single expression can contain multiple properties:
 \`\`\`javascript

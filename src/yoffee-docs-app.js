@@ -162,7 +162,8 @@ customElements.define("yoffee-docs-app", class extends YoffeeElement {
 ${() => {
     if (this.state.currentPage === PAGES.home) {
         return html()`<home-page getstarted=${() => () => this.switchPage(PAGES.docs)}
-                                      github=${() => () => this.openGithub()}></home-page>`
+                                 github=${() => () => this.openGithub()}
+                                 discord=${() => () => this.openDiscord()}></home-page>`
     } else if (this.state.currentPage === PAGES.docs) {
         return html()`<docs-page></docs-page>`
     } else if (this.state.currentPage === PAGES.supportUs) {
@@ -182,5 +183,9 @@ ${() => {
 
     openGithub() {
         window.open("https://github.com/lefetmeofefet/yoffee", "_blank")
+    }
+
+    openDiscord() {
+        window.open("https://discord.gg/cNSMUXU8", "_blank")
     }
 });
